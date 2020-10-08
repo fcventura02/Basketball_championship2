@@ -8,22 +8,90 @@
     <ImageView
         android:layout_width="128dp"
         android:layout_height="128dp"
-        android:src="@drawable/ic_basketball_player"/>
+        android:src="@drawable/ic_basketball_player"
+        android:contentDescription="@string/description_logo_basketball_player" />
 
     <TextView
         style="@style/tv_title"
-        android:text="CAMPEONADO DE BASQUETE" />
+        android:text="@string/main_title" />
 
-    <TextView
-        style="@style/tv_subtitle"
-        android:text="Iniciar novo campeonato" />
-    <EditText
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Nome do campeonato"/>
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Nome do campeonato"/>
+        android:layout_height="match_parent"
+        android:id="@+id/contain_campeonato">
+
+
+        <TextView
+            android:id="@+id/textView"
+            style="@style/tv_subtitle"
+            android:text="@string/main_subtitle"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/editText2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:hint="@string/main_hint_campeonato"
+            app:layout_constraintEnd_toEndOf="@+id/textView"
+            app:layout_constraintStart_toStartOf="@+id/textView"
+            app:layout_constraintTop_toBottomOf="@+id/textView"
+            android:autofillHints="@string/main_hint_campeonato"
+            android:inputType="text" />
+        <EditText
+            android:id="@+id/name_team"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="16dp"
+            android:hint="@string/main_hint_team"
+            app:layout_constraintEnd_toStartOf="@+id/btm_confirm"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editText2"
+            android:autofillHints="@string/main_hint_team"
+            android:inputType="text" />
+
+        <Button
+            android:id="@+id/btm_confirm"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginEnd="5dp"
+            android:background="@drawable/ic_check"
+            android:backgroundTintMode="src_over"
+            app:layout_constraintBottom_toBottomOf="@+id/name_team"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/name_team" />
+
+
+        <ListView
+            android:id="@+id/list_teams"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            app:layout_constraintBottom_toTopOf="@+id/button"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/name_team"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <Button
+            android:id="@+id/button"
+            android:onClick="nextPage"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_btm"
+            android:text="@string/iniciar"
+            android:textColor="#fff"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:ignore="MissingConstraints" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </LinearLayout>

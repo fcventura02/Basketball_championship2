@@ -1,3 +1,17 @@
 <resources>
     <string name="app_name">Basketball_championship</string>
+    <string name="bg_btm">#000</string>
+    <string name="description_logo_basketball_player">logo_basketball_player</string>
+    <string name="lista_teams_iniciar_partida">Iniciar partida</string>
+    <string name="main_title">CAMPEONADO DE BASQUETE</string>
+    <string name="main_subtitle">Iniciar novo campeonato</string>
+    <string name="main_hint_campeonato">Nome do campeonato</string>
+    <string name="main_hint_team">Nome do time</string>
+    <string name="iniciar">INICIAR</string>
+    <string name="barra">barra</string>
+    <string name="finalizar">FINALIZAR</string>
+    <string name="_1pts">1pts</string>
+    <string name="_3pts">3pts</string>
+    <string name="_negative_1pts">-1pts</string>
+    <string name="_negative_3pts">-3pts</string>
 </resources>
