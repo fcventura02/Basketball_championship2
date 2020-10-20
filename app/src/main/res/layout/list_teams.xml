@@ -48,7 +48,7 @@
             android:id="@+id/tabela_campeonato"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:stretchColumns="0,2">
+            android:stretchColumns="0,4">
 
             <!--  <TableRow
                    android:layout_width="match_parent"

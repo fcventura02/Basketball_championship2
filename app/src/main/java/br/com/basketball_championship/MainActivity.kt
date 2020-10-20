@@ -1,10 +1,12 @@
+@file:Suppress("DEPRECATION")
+
 package br.com.basketball_championship
 
 import android.app.AlertDialog
-import android.content.DialogInterface
 import android.widget.ArrayAdapter
 import android.content.Intent
 import android.os.Bundle
+import android.preference.PreferenceManager
 import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
@@ -19,8 +21,12 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
-
+        val myPreferences = PreferenceManager.getDefaultSharedPreferences(this)
+        val mayEditor = myPreferences.edit()
+        mayEditor.putInt("index", 0)
+        mayEditor.putString("valueTeam1", "0")
+        mayEditor.putString("valueTeam2", "0")
+        mayEditor.apply()
         //Identificando a lista
         listView = findViewById(R.id.list_teams)
 
@@ -40,7 +46,6 @@ class MainActivity : AppCompatActivity() {
         //adicionando estado a lista
         listView.adapter = adapter
 
-
         //adicionando ação ao clicar em um item
         listView.setOnItemClickListener { parent, view, position, id ->
             //Caixa de dialogo para deletar um item
@@ -48,10 +53,10 @@ class MainActivity : AppCompatActivity() {
                 .setIcon(R.drawable.ic_cancel)
                 .setTitle("Deletar time")
                 .setMessage("deseja deletar o time ${arrTeam[position]}")
-                .setPositiveButton("Sim", { dialogInterface, i ->
+                .setPositiveButton("Sim") { _, _ ->
                     arrTeam.removeAt(position)
                     adapter.notifyDataSetChanged()
-                })
+                }
                 .setNegativeButton("Não", null)
                 .show()
         }
