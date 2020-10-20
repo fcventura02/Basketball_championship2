@@ -50,6 +50,8 @@ class Game : AppCompatActivity() {
                 )
                     .show()
             else {
+                mayEditor.putString("valueTeam1", pointsTeam1.toString())
+                mayEditor.putString("valueTeam2", pointsTeam2.toString())
                 mayEditor.putInt("index", position + 1)
                 mayEditor.apply()
                 pageList()
@@ -58,8 +60,6 @@ class Game : AppCompatActivity() {
     }
 
     fun actionPointPositive(int: Int, team1: String, team2: String) {
-        val myPreferences = PreferenceManager.getDefaultSharedPreferences(this)
-        val mayEditor = myPreferences.edit()
         AlertDialog.Builder(this)
             .setIcon(R.drawable.ic_check)
             .setTitle("Adicionar Pontos")
@@ -69,23 +69,17 @@ class Game : AppCompatActivity() {
             ) { dialogInterface, i ->
                 pointsTeam1 = sun(int, pointsTeam1)
                 game_pointsTeam1.text = pointsTeam1.toString()
-                mayEditor.putString("valueTeam1", pointsTeam1.toString())
-                mayEditor.apply()
             }
             .setPositiveButton(
                 team2
             ) { dialogInterface, i ->
                 pointsTeam2 = sun(int, pointsTeam2)
                 game_pointsTeam2.text = pointsTeam2.toString()
-                mayEditor.putString("valueTeam2", pointsTeam2.toString())
-                mayEditor.apply()
             }
             .show()
     }
 
     fun actionPointNegative(int: Int, team1: String, team2: String) {
-        val myPreferences = PreferenceManager.getDefaultSharedPreferences(this)
-        val mayEditor = myPreferences.edit()
         if (pointsTeam1 >= int || pointsTeam2 >= int) {
             AlertDialog.Builder(this)
                 .setIcon(R.drawable.ic_cancel)
@@ -97,8 +91,6 @@ class Game : AppCompatActivity() {
                     if (pointsTeam1 >= int) {
                         pointsTeam1 = sub(int, pointsTeam1)
                         game_pointsTeam1.text = pointsTeam1.toString()
-                        mayEditor.putString("valueTeam1", pointsTeam1.toString())
-                        mayEditor.apply()
                     }
                 }
                 .setPositiveButton(
@@ -107,8 +99,6 @@ class Game : AppCompatActivity() {
                     if (pointsTeam2 >= int) {
                         pointsTeam2 = sub(int, pointsTeam2)
                         game_pointsTeam2.text = pointsTeam2.toString()
-                        mayEditor.putString("valueTeam1", pointsTeam1.toString())
-                        mayEditor.apply()
                     }
                 }
                 .show()
